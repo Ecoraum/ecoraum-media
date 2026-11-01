@@ -1,0 +1,47 @@
+/* Ecoraum brand: exactly two fonts.
+   PRIMARY  = Archivo (heavy, expanded) – matches the ECORAUM wordmark in the logo
+   SECONDARY = Inter – body text, chat bubbles */
+@font-face { font-family: "Archivo"; src: url(node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2) format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: "Inter"; font-weight: 400; src: url(node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url(node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url(node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2); }
+
+:root {
+  --ink: #0f0f0f;
+  --paper: #f3f2ee;
+  --white: #ffffff;
+  --muted: #6b6b6b;
+  --line: #dcdbd5;
+  --accent: #23875a;        /* eco green, on light backgrounds */
+  --accent-dark: #8fdcb2;   /* eco green, on black */
+  --chat-bg: #ece8df;
+  --bubble-out: #dcf6cf;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Inter", "Noto Color Emoji", sans-serif; color: var(--ink); background: #777; }
+
+.head { font-family: "Archivo", "Noto Color Emoji", sans-serif; font-weight: 850; font-stretch: 112%; letter-spacing: -0.02em; line-height: 1.06; }
+.kick { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: 0.14em; }
+.word { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* Logo mark (recreated from the profile picture) */
+.mark { display: inline-block; }
+.mark svg { display: block; width: 100%; height: auto; }
+
+/* Phone / chat */
+.phone { background: var(--chat-bg); border-radius: 52px; overflow: hidden; border: 14px solid #161616; display: flex; flex-direction: column; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3); }
+.bar { background: var(--ink); color: #fff; display: flex; align-items: center; gap: 20px; padding: 26px 30px; flex: none; }
+.avatar { width: 68px; height: 68px; border-radius: 50%; background: #fff; display: grid; place-items: center; flex: none; }
+.avatar .mark { width: 46px; }
+.bar .name { font-weight: 600; font-size: 29px; }
+.bar .sub { font-size: 21px; opacity: 0.75; margin-top: 2px; }
+.chat { flex: 1; min-height: 0; padding: 28px 26px 24px; display: flex; flex-direction: column; gap: 14px; justify-content: flex-end; overflow: hidden; }
+.msg { max-width: 84%; padding: 18px 24px 12px; border-radius: 24px; font-size: 30px; line-height: 1.38; box-shadow: 0 1px 1px rgba(0,0,0,0.08); white-space: pre-line; flex: none; }
+.msg .t { display: block; text-align: right; font-size: 19px; color: var(--muted); margin-top: 4px; }
+.in { background: #fff; align-self: flex-start; border-top-left-radius: 6px; }
+.out { background: var(--bubble-out); align-self: flex-end; border-top-right-radius: 6px; }
+.sys { align-self: center; background: #fff; color: var(--ink); font-weight: 600; font-size: 26px; padding: 8px 18px; border-radius: 12px; flex: none; }
+.hl { font-weight: 600; }
+.sig { color: var(--muted); }
+.typing { align-self: flex-start; background: #fff; border-radius: 24px; border-top-left-radius: 6px; padding: 22px 26px; display: flex; gap: 10px; flex: none; }
+.typing i { width: 14px; height: 14px; border-radius: 50%; background: #9a9a9a; display: block; }

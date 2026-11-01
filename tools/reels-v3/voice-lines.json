@@ -1,0 +1,25 @@
+[
+ {"id": "heiz-1", "say": "Sonntagabend. Bei deiner Mieterin bleibt die Heizung kalt.", "show": "Sonntagabend. Bei deiner Mieterin bleibt die Heizung kalt."},
+ {"id": "heiz-2", "say": "Sie schreibt einfach unserer Wotsäpp-Nummer.", "show": "Sie schreibt einfach unserer WhatsApp-Nummer."},
+ {"id": "heiz-3", "say": "Unser Assistent fragt nur, was der Handwerker wissen muss.", "show": "Unser Assistent fragt nur, was der Handwerker wissen muss."},
+ {"id": "heiz-4", "say": "Dann fasst er zusammen, und legt einen Fall an.", "show": "Dann fasst er zusammen und legt einen Fall an."},
+ {"id": "heiz-5", "say": "Wir organisieren den Heizungsbauer.", "show": "Wir organisieren den Heizungsbauer."},
+ {"id": "heiz-6", "say": "Und halten dich auf dem Laufenden.", "show": "Und halten dich auf dem Laufenden."},
+ {"id": "heiz-7", "say": "Ecoraum. Vermieten ohne Stress.", "show": "Ecoraum. Vermieten ohne Stress."},
+
+ {"id": "not-1", "say": "Zwei Uhr nachts. Bei deinem Mieter tropft Wasser durch die Decke.", "show": "2 Uhr nachts. Bei deinem Mieter tropft Wasser durch die Decke."},
+ {"id": "not-2", "say": "Er schreibt uns auf Wotsäpp.", "show": "Er schreibt uns auf WhatsApp."},
+ {"id": "not-3", "say": "Unser Assistent gibt sofort die wichtigsten Sicherheitshinweise.", "show": "Unser Assistent gibt sofort die wichtigsten Sicherheitshinweise."},
+ {"id": "not-4", "say": "Und meldet den Fall als Notfall.", "show": "Und meldet den Fall als Notfall."},
+ {"id": "not-5", "say": "Unser Team bekommt die Meldung sofort.", "show": "Unser Team bekommt die Meldung sofort."},
+ {"id": "not-6", "say": "Mit allem, was wir wissen müssen.", "show": "Mit allem, was wir wissen müssen."},
+ {"id": "not-7", "say": "Ecoraum. Auch nachts erreichbar.", "show": "Ecoraum. Auch nachts erreichbar."},
+
+ {"id": "frage-1", "say": "Nicht jedes Problem braucht gleich einen Handwerker.", "show": "Nicht jedes Problem braucht gleich einen Handwerker."},
+ {"id": "frage-2", "say": "Der Heizkörper gluckert? Einfach fragen.", "show": "Der Heizkörper gluckert? Einfach fragen."},
+ {"id": "frage-3", "say": "Unser Assistent antwortet sofort. Schritt für Schritt.", "show": "Unser Assistent antwortet sofort – Schritt für Schritt."},
+ {"id": "frage-4", "say": "Zum Beispiel, wie man einen Heizkörper entlüftet.", "show": "Zum Beispiel, wie man einen Heizkörper entlüftet."},
+ {"id": "frage-5", "say": "Und wenn das nicht hilft?", "show": "Und wenn das nicht hilft?"},
+ {"id": "frage-6", "say": "Dann schicken wir den Handwerker.", "show": "Dann schicken wir den Handwerker."},
+ {"id": "frage-7", "say": "Ecoraum. Einfach fragen.", "show": "Ecoraum. Einfach fragen."}
+]
