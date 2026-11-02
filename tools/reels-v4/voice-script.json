@@ -173,5 +173,290 @@
    "say": "Wir starten in Stuttgart. Schreib uns „Pilot“.",
    "ca": 3.6
   }
+ ],
+ "frist": [
+  {
+   "who": "L",
+   "say": "Hast du Mieter und eine Zentralheizung? Dann hör kurz zu.",
+   "ca": 4.4
+  },
+  {
+   "who": "L",
+   "say": "Bis 31. Dezember müssen Heizkostenverteiler und Wärmezähler aus der Ferne ablesbar sein.",
+   "ca": 6.5
+  },
+  {
+   "who": "L",
+   "say": "Sonst dürfen deine Mieter ihren Anteil an den Heizkosten um drei Prozent kürzen.",
+   "ca": 5.7
+  },
+  {
+   "who": "L",
+   "say": "Ausnahmen gibt's, zum Beispiel bei Etagenheizungen.",
+   "ca": 3.7
+  },
+  {
+   "who": "L",
+   "say": "Schick uns ein Foto deiner Geräte. Wir schauen mit dir, ob du handeln musst.",
+   "ca": 5.7
+  }
+ ],
+ "pov": [
+  {
+   "who": "L",
+   "say": "Du hast drei Wohnungen vermietet. Und einen Vollzeitjob.",
+   "ca": 4.3
+  },
+  {
+   "who": "L",
+   "say": "Montag: „Heizung kalt.“ Mittwoch: „Fenster klemmt.“ Freitag, 23 Uhr: „Wasser im Bad.“",
+   "ca": 6.8
+  },
+  {
+   "who": "L",
+   "say": "Für eine Hausverwaltung bist du zu klein. Für alles selbst zu beschäftigt.",
+   "ca": 5.6
+  },
+  {
+   "who": "L",
+   "say": "Genau dafür gibt's Ecoraum. Deine Mieter schreiben uns per WhatsApp, wir kümmern uns.",
+   "ca": 6.3
+  },
+  {
+   "who": "L",
+   "say": "Wir starten in Stuttgart. Schreib uns „Pilot“.",
+   "ca": 3.6
+  }
+ ],
+ "haupthahn": [
+  {
+   "who": "L",
+   "say": "Wasser spritzt unter der Spüle. Und dein Mieter weiß nicht, wo der Haupthahn ist.",
+   "ca": 6.0
+  },
+  {
+   "who": "L",
+   "say": "Er ruft dich an. Du sitzt im Meeting.",
+   "ca": 3.0
+  },
+  {
+   "who": "L",
+   "say": "Mit Ecoraum schreibt er uns. Und unser Assistent weiß es schon: Keller, links neben der Tür.",
+   "ca": 7.0
+  },
+  {
+   "who": "L",
+   "say": "Weil du es uns einmal gesagt hast.",
+   "ca": 2.5
+  },
+  {
+   "who": "L",
+   "say": "Wasser zu, Fall angelegt, wir schicken den Installateur.",
+   "ca": 4.1
+  },
+  {
+   "who": "L",
+   "say": "Schreib uns „Pilot“.",
+   "ca": 1.6
+  }
+ ],
+ "link": [
+  {
+   "who": "L",
+   "say": "Neuer Mieter zieht ein. Und ab heute bist du die Hotline für alles.",
+   "ca": 5.1
+  },
+  {
+   "who": "L",
+   "say": "Oder du schickst ihm einen Link.",
+   "ca": 2.4
+  },
+  {
+   "who": "L",
+   "say": "Er tippt drauf und schickt die Nachricht ab. Fertig.",
+   "ca": 4.0
+  },
+  {
+   "who": "L",
+   "say": "Ab jetzt kennt unser Assistent seine Wohnung, die Heizung und den Haupthahn.",
+   "ca": 5.4
+  },
+  {
+   "who": "L",
+   "say": "Wenn was kaputtgeht, schreibt er uns. Rund um die Uhr.",
+   "ca": 4.2
+  },
+  {
+   "who": "L",
+   "say": "Schreib uns „Pilot“.",
+   "ca": 1.6
+  }
+ ],
+ "sprache": [
+  {
+   "who": "L",
+   "say": "Dein Mieter schreibt dir auf Englisch. Oder Ukrainisch. Oder Türkisch.",
+   "ca": 5.5
+  },
+  {
+   "who": "L",
+   "say": "Du verstehst nur: irgendwas mit Wasser.",
+   "ca": 3.1
+  },
+  {
+   "who": "L",
+   "say": "Bei Ecoraum antwortet unser Assistent in seiner Sprache und fragt nach, was der Handwerker wissen muss.",
+   "ca": 7.3
+  },
+  {
+   "who": "L",
+   "say": "Wir bekommen den Fall auf Deutsch. Und kümmern uns.",
+   "ca": 4.0
+  },
+  {
+   "who": "L",
+   "say": "Schreib uns „Pilot“.",
+   "ca": 1.6
+  }
+ ],
+ "schimmel": [
+  {
+   "who": "L",
+   "say": "„Bei mir schimmelt's im Bad.“ Der Satz, vor dem jeder Vermieter Angst hat.",
+   "ca": 5.3
+  },
+  {
+   "who": "L",
+   "say": "Ist es Lüften? Ist es die Wand? Und wer zahlt?",
+   "ca": 3.9
+  },
+  {
+   "who": "L",
+   "say": "Mit Ecoraum schickt dein Mieter uns Fotos. Unser Assistent gibt sofort Tipps zum Lüften.",
+   "ca": 6.5
+  },
+  {
+   "who": "L",
+   "say": "Und alles landet in einem Fall mit Nummer: wann, wo, wie es aussieht.",
+   "ca": 5.2
+  },
+  {
+   "who": "L",
+   "say": "Dann schauen wir uns das mit einem Fachbetrieb an.",
+   "ca": 3.6
+  },
+  {
+   "who": "L",
+   "say": "Schreib uns „Pilot“.",
+   "ca": 1.6
+  }
+ ],
+ "verstopft": [
+  {
+   "who": "L",
+   "say": "Sonntag, neun Uhr. „Die Toilette ist verstopft und läuft gleich über.“",
+   "ca": 5.3
+  },
+  {
+   "who": "L",
+   "say": "Unser Assistent antwortet sofort: nicht nochmal spülen, Wasser am Spülkasten zudrehen, mit der Saugglocke probieren. Keine Chemie.",
+   "ca": 9.7
+  },
+  {
+   "who": "L",
+   "say": "Oft ist das Problem damit schon gelöst.",
+   "ca": 2.9
+  },
+  {
+   "who": "L",
+   "say": "Und wenn nicht, organisieren wir den Sanitär.",
+   "ca": 3.3
+  },
+  {
+   "who": "L",
+   "say": "Dein Sonntag bleibt deiner. Schreib uns „Pilot“.",
+   "ca": 3.8
+  }
+ ],
+ "rauchmelder": [
+  {
+   "who": "L",
+   "say": "Piep. Und eine Minute später wieder. Mitten in der Nacht.",
+   "ca": 4.6
+  },
+  {
+   "who": "L",
+   "say": "Dein Mieter schreibt dir um drei Uhr: „Was ist das?“",
+   "ca": 4.0
+  },
+  {
+   "who": "L",
+   "say": "Mit Ecoraum fragt er unseren Assistenten. Meist ist die Batterie schwach oder der Melder ist zu alt.",
+   "ca": 7.3
+  },
+  {
+   "who": "L",
+   "say": "Der Assistent erklärt, was jetzt zu tun ist. Muss ein neuer her, kümmern wir uns.",
+   "ca": 6.0
+  },
+  {
+   "who": "L",
+   "say": "Und du schläfst weiter. Schreib uns „Pilot“.",
+   "ca": 3.5
+  }
+ ],
+ "termin": [
+  {
+   "who": "L",
+   "say": "Handwerker kann Dienstag. Mieter nur Mittwoch.",
+   "ca": 3.6
+  },
+  {
+   "who": "L",
+   "say": "Und du bist der Bote dazwischen. Fünf Anrufe für einen Termin.",
+   "ca": 4.7
+  },
+  {
+   "who": "L",
+   "say": "Bei Ecoraum stimmen wir den Termin direkt ab. Mit beiden.",
+   "ca": 4.4
+  },
+  {
+   "who": "L",
+   "say": "Du bekommst nur eine Nachricht: erledigt.",
+   "ca": 3.3
+  },
+  {
+   "who": "L",
+   "say": "Schreib uns „Pilot“.",
+   "ca": 1.6
+  }
+ ],
+ "ausgesperrt": [
+  {
+   "who": "L",
+   "say": "23 Uhr. Dein Mieter steht vor der Tür. Schlüssel weg.",
+   "ca": 4.4
+  },
+  {
+   "who": "L",
+   "say": "Er ruft dich an. Oder den erstbesten Schlüsseldienst aus dem Netz.",
+   "ca": 5.0
+  },
+  {
+   "who": "L",
+   "say": "Mit Ecoraum schreibt er uns. Wir schicken jemanden aus der Region, den wir kennen.",
+   "ca": 6.1
+  },
+  {
+   "who": "L",
+   "say": "Und du wirst nicht um 23 Uhr geweckt.",
+   "ca": 2.8
+  },
+  {
+   "who": "L",
+   "say": "Schreib uns „Pilot“.",
+   "ca": 1.6
+  }
  ]
 }
