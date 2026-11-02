@@ -2,18 +2,33 @@
  "gruender": [
   {
    "who": "L",
-   "say": "Ich bin Louis aus Stuttgart und hab mehrere Wohnungen mitrenoviert.",
-   "ca": 4.8
+   "say": "Ich bin Louis aus Stuttgart.",
+   "ca": 2.1
   },
   {
    "who": "D",
-   "say": "Ich bin Dominic und studiere Geografie und Wirtschaft in Edinburgh.",
-   "ca": 4.8
+   "say": "Und ich bin Dominic, aufgewachsen in Portugal und England.",
+   "ca": 4.2
   },
   {
    "who": "L",
-   "say": "Dabei hab ich gelernt: Das Problem ist selten die Reparatur. Das Problem ist, dass keiner erreichbar ist.",
-   "ca": 7.9
+   "say": "Wir sind beide in einem Umfeld groß geworden, in dem wir früh viel über Immobilien gelernt haben.",
+   "ca": 6.9
+  },
+  {
+   "who": "L",
+   "say": "Ich hab Wohnungen mitrenoviert und viel mit Eigentümern und Untermietern zu tun gehabt.",
+   "ca": 6.2
+  },
+  {
+   "who": "D",
+   "say": "Und ich studiere Geografie und Wirtschaft in Edinburgh.",
+   "ca": 4.0
+  },
+  {
+   "who": "L",
+   "say": "Dabei haben wir immer wieder gesehen: Das Problem ist selten die Reparatur. Das Problem ist, dass keiner erreichbar ist.",
+   "ca": 9.0
   },
   {
    "who": "D",
