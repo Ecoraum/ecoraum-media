@@ -70,7 +70,7 @@ def norm(t):
 
 def sim(a, b):
     a, b = " ".join(norm(a)), " ".join(norm(b))
-    return difflib.SequenceMatcher(None, a, b).ratio() if a and b else 0.0
+    return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio() if a and b else 0.0
 
 
 # 3) transcribe chunks (local Whisper base via sherpa-onnx); without the model fall back to lengths only
@@ -101,10 +101,27 @@ def dur(i, j):
 long_pause_after = [i < M - 1 and (chunks[i + 1][0] - chunks[i][1]) * 0.02 >= 2.4 for i in range(M)]
 
 
+def restarts(i):
+    """True when chunk i is a slip: its words come again right at the start of the next chunk."""
+    if texts is None or i >= M - 1:
+        return False
+    a, b = norm(texts[i]), norm(texts[i + 1])
+    if not a or not b:
+        return False
+    head = b[: len(a) + 1]
+    return difflib.SequenceMatcher(None, a, head, autojunk=False).ratio() >= 0.6
+
+
+slip = [restarts(i) for i in range(M)]
+
+
 def line_cost(i, j, k):
+    # long pauses inside one line are unnatural; slips glued into a line sound like stuttering
+    inner = sum(max(0.0, (chunks[q][0] - chunks[q - 1][1]) * 0.02 - 0.45) for q in range(i + 1, j + 1))
+    glued_slip = any(slip[q] for q in range(i, j))
     if texts is not None:
         s = sim(" ".join(texts[i:j + 1]), lines[k]["say"])
-        return 1.0 - s, s
+        return 1.0 - s + 0.25 * inner + (0.6 if glued_slip else 0.0), s
     r = dur(i, j) / lines[k].get("ca", 1.5)
     return float(np.log(max(r, 0.05)) ** 2), None
 
@@ -117,7 +134,7 @@ for i in range(M + 1):
         c, _ = best[i][k]
         if c == INF or i == M:
             continue
-        skip = 0.12 if long_pause_after[i] else 0.55        # a chunk right before a long pause is a typical slip
+        skip = 0.05 if slip[i] else 0.12 if long_pause_after[i] else 0.55   # slips and chunks before a long pause are cheap to drop
         if c + skip < best[i + 1][k][0]:
             best[i + 1][k] = (c + skip, (i, k, "skip"))
         if k < N:
@@ -186,7 +203,9 @@ durs = [render(k, seg, 1.0) for k, seg in enumerate(cuts, start=1)]
 def place(durs):
     starts, end = [], 0.0
     for ln, d in zip(lines, durs):
-        st = max(ln["at"], end + 0.15); starts.append(st); end = st + d
+        # planned start if the script has one (fixed music timeline), otherwise voice-led: natural 0.3 s breath
+        st = max(ln["at"], end + 0.15) if "at" in ln else (end + 0.3 if starts else 0.3)
+        starts.append(st); end = st + d
     return starts
 
 
@@ -207,7 +226,8 @@ vo = []
 for i, ln in enumerate(lines):
     sec_end = SECTIONS.get(ln.get("sec"), 18.2)
     vo.append({"id": f"{vid}-{i + 1}", "start": round(starts[i], 3), "dur": round(durs[i], 3), "say": ln["say"],
-               "late": round(starts[i] - ln["at"], 2), "spill": round(max(0.0, starts[i] + durs[i] - sec_end), 2),
+               "late": round(starts[i] - ln.get("at", starts[i]), 2),
+               "spill": round(max(0.0, starts[i] + durs[i] - sec_end), 2) if "sec" in ln else 0.0,
                "tempo": round(tempo[i], 3)})
 json.dump(vo, open(os.path.join(out_dir, f"{vid}.vo.json"), "w"), ensure_ascii=False, indent=1)
 spill = [f"{v['id']} +{v['spill']}s" for v in vo if v["spill"] > 0.25]

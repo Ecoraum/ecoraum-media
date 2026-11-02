@@ -24,7 +24,9 @@ heard = " ".join(heard)
 def norm(t):
     t = t.lower().replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss")
     return " ".join(re.sub(r"[^a-z0-9 ]+", " ", t).split())
-scores = {vid: difflib.SequenceMatcher(None, norm(heard), norm(" ".join(l["say"] for l in ls))).ratio() for vid, ls in scripts.items()}
+# compare word by word; autojunk off, otherwise difflib ignores frequent characters in texts over 200 chars
+scores = {vid: difflib.SequenceMatcher(None, norm(heard).split(), norm(" ".join(l["say"] for l in ls)).split(), autojunk=False).ratio()
+          for vid, ls in scripts.items()}
 best = max(scores, key=scores.get)
 print("match per video:", ", ".join(f"{k} {v:.2f}" for k, v in sorted(scores.items(), key=lambda kv: -kv[1])))
 if scores[best] < 0.45:

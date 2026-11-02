@@ -90,9 +90,9 @@ h2 { font-size: 20px; letter-spacing: -0.015em; font-weight: 700; }
 
 <div class="wrap">
   <header>
-    <div class="brand">Ecoraum · Reels v4</div>
+    <div class="brand">Ecoraum · Sprechtexte</div>
     <h1>Sprechskript für Louis &amp; Dominic</h1>
-    <p class="lede">Fünf Reels, 18 Sekunden, auf dem Drop von Louis' Song. Der Text im Video ist gleichzeitig euer Sprechtext. Ihr sprecht, ich lege es passgenau unter die Bilder.</p>
+    <p class="lede">Fünf kurze Texte zum Vorlesen, je 20 bis 30 Sekunden. Ihr sprecht, die Bilder werden danach um eure Stimme herum gebaut.</p>
   </header>
 
   <section aria-labelledby="how">
@@ -137,87 +137,73 @@ h2 { font-size: 20px; letter-spacing: -0.015em; font-weight: 700; }
   <div class="tp-ctl">
     <button class="btn ghost" id="tp-prev" type="button">Zurück</button>
     <button class="btn" id="tp-nextbtn" type="button">Weiter</button>
-    <button class="btn ghost" id="tp-run" type="button">Zeitlauf (18 s)</button>
+    <button class="btn ghost" id="tp-run" type="button" hidden>Zeitlauf</button>
     <button class="btn ghost" id="tp-close" type="button">Schließen</button>
   </div>
 </div>
 
 <script>
 const VIDEOS = [
-  { id: "notfall", name: "Notfall · 2:14", speaker: "Louis", idea: "Mieter-Nachrichten, Folge 1. Dein Sperrbildschirm mitten in der Nacht.",
-    hooks: [
-      { on: true, title: "Sperrbildschirm um 2:14", text: "Nachricht leuchtet auf: „Hilfe, bei mir tropft Wasser durch die Decke!“ Dazu groß: „Was jetzt?“" },
-      { title: "Frage", text: "„Was passiert, wenn dein Mieter nachts einen Wasserschaden meldet?“ Tropfen fallen über den Bildschirm." },
-      { title: "Vorher / nachher", text: "Links: „Ohne Ecoraum: du um 2:14 am Telefon.“ Rechts: „Mit Ecoraum: du schläfst.“" } ],
-    lines: [
-      { at: 0.2, ca: 2.9, who: "L", say: "Zwei Uhr nachts. Dein Handy leuchtet." },
-      { at: 2.6, ca: 0.8, who: "L", say: "Was jetzt?", hint: "kurz, fragend" },
-      { at: 3.9, ca: 2.5, who: "L", say: "Mit Ecoraum schreibt er einfach uns." },
-      { at: 7.8, ca: 3.1, who: "L", say: "Notfall erkannt. Das Team ist alarmiert.", hint: "auf dem Drop" },
-      { at: 10.2, ca: 1.5, who: "L", say: "Mit allem, was zählt." },
-      { at: 13.5, ca: 0.6, who: "L", say: "Und du?", hint: "kurz, fragend" },
-      { at: 14.4, ca: 1.2, who: "L", say: "Schläfst weiter.", hint: "trocken, mit Lächeln" },
-      { at: 15.6, ca: 2.5, who: "L", say: "Ecoraum. Vermieten ohne Stress." } ] },
-  { id: "heizung", name: "Heizung · Sonntag", speaker: "Louis", idea: "Mieter-Nachrichten, Folge 2. Sonntagabend, die Heizung ist kalt.",
-    hooks: [
-      { on: true, title: "Sperrbildschirm um 21:47", text: "„Hallo, die Heizung im Bad bleibt kalt.“ Dazu groß: „Wer kümmert sich?“" },
-      { title: "Kontrast", text: "„Büro: Montag ab 9.“ – „Ecoraum: jetzt.“" },
-      { title: "Konkretes Versprechen", text: "„Heizung kalt am Sonntag? So läuft das in 3 Nachrichten.“" } ],
-    lines: [
-      { at: 0.2, ca: 2.0, who: "L", say: "Sonntagabend, kurz vor zehn." },
-      { at: 2.3, ca: 1.3, who: "L", say: "Wer kümmert sich?" },
-      { at: 3.9, ca: 2.1, who: "L", say: "Mit Ecoraum schreibt sie uns." },
-      { at: 7.8, ca: 2.4, who: "L", say: "Fall angelegt, ans Team übergeben.", hint: "auf dem Drop" },
-      { at: 10.3, ca: 2.2, who: "L", say: "Termin steht: Montag, acht Uhr." },
-      { at: 13.5, ca: 0.6, who: "L", say: "Und du?", hint: "kurz, fragend" },
-      { at: 14.4, ca: 0.9, who: "L", say: "Kein Anruf.", hint: "trocken" },
-      { at: 15.6, ca: 2.5, who: "L", say: "Ecoraum. Vermieten ohne Stress." } ] },
-  { id: "frage", name: "Frage · Heizkörper", speaker: "Dominic", idea: "Mieter-Nachrichten, Folge 3. Eine Frage, die du nie wieder beantworten musst.",
-    hooks: [
-      { on: true, title: "Versprechen", text: "„Diese Frage musst du nie wieder beantworten:“ Darunter ploppt die Mieter-Nachricht auf." },
-      { title: "Vermieter-Hack", text: "„Vermieter-Hack: Lass deine Mieter hier fragen statt dich.“" },
-      { title: "Beweis", text: "„Heizkörper gluckert? Diese Antwort kam in Sekunden.“" } ],
-    lines: [
-      { at: 0.1, ca: 3.1, who: "D", say: "Diese Frage musst du nie wieder beantworten." },
-      { at: 3.9, ca: 3.8, who: "D", say: "Unser Assistent antwortet sofort, Schritt für Schritt." },
-      { at: 7.8, ca: 2.9, who: "D", say: "Antwort in Sekunden. Rund um die Uhr.", hint: "auf dem Drop" },
-      { at: 10.6, ca: 2.4, who: "D", say: "Wenn nötig, kommt der Handwerker." },
-      { at: 13.5, ca: 0.6, who: "D", say: "Und du?", hint: "kurz, fragend" },
-      { at: 14.4, ca: 1.2, who: "D", say: "Hast Feierabend." },
-      { at: 15.6, ca: 2.0, who: "D", say: "Ecoraum. Einfach fragen." } ] },
-  { id: "gruender", name: "Gründer", speaker: "beide", idea: "Wer wir sind. Am stärksten als Selfie-Video mit euren Gesichtern, sonst als Stimme.",
+  { id: "gruender", name: "Gründer · Selfie-Video", speaker: "Louis + Dominic", idea: "Am besten als Selfie-Video, abwechselnd in die Kamera.",
     hooks: [
       { on: true, title: "Klare Ansage", text: "„Zwei Studenten bauen die Hausverwaltung neu.“" },
       { title: "Geschichte (Louis vor der Kamera)", text: "„Ich hab Wohnungen renoviert – und das Problem war nie die Reparatur.“" },
       { title: "Bei null", text: "„So würden wir Hausverwaltung bauen, wenn wir bei null anfangen. Machen wir gerade.“" } ],
     lines: [
-      { at: 0.1, ca: 1.2, who: "L", say: "Zwei Studenten …" },
-      { at: 1.3, ca: 2.2, who: "D", say: "… bauen die Hausverwaltung neu." },
-      { at: 3.95, ca: 1.1, who: "L", say: "Ich bin Louis." },
-      { at: 5.6, ca: 1.2, who: "D", say: "Ich bin Dominic." },
-      { at: 7.7, ca: 0.9, who: "L", say: "Erreichbar.", hint: "genau auf dem Drop, knackig" },
-      { at: 8.66, ca: 1.0, who: "D", say: "Organisiert." },
-      { at: 9.63, ca: 0.8, who: "L", say: "Bezahlbar." },
-      { at: 10.6, ca: 1.0, who: "D", say: "Per WhatsApp." },
-      { at: 11.6, ca: 1.8, who: "L", say: "Wir starten in Stuttgart." },
-      { at: 13.5, ca: 1.5, who: "D", say: "Folg uns beim Aufbau." },
-      { at: 15.6, ca: 0.7, who: "L+D", say: "Ecoraum.", hint: "beide gleichzeitig" } ] },
-  { id: "vision", name: "Vision", speaker: "Dominic", idea: "Hausverwaltung, neu gedacht: vier Dinge, die wir anders machen.",
+      { ca: 4.8, who: "L", say: "Ich bin Louis aus Stuttgart und hab mehrere Wohnungen mitrenoviert." },
+      { ca: 4.8, who: "D", say: "Ich bin Dominic und studiere Geografie und Wirtschaft in Edinburgh." },
+      { ca: 7.9, who: "L", say: "Dabei hab ich gelernt: Das Problem ist selten die Reparatur. Das Problem ist, dass keiner erreichbar ist." },
+      { ca: 4.6, who: "D", say: "Und für ein paar Wohnungen ist eine Hausverwaltung oft zu teuer." },
+      { ca: 9.0, who: "L", say: "Deshalb bauen wir Ecoraum. Deine Mieter schreiben uns per WhatsApp, und wir kümmern uns. Mit Handwerkern aus der Region." },
+      { ca: 3.6, who: "D", say: "Wir starten in Stuttgart. Schreib uns „Pilot“." } ] },
+  { id: "notfall", name: "Notfall · 2 Uhr nachts", speaker: "Louis", idea: "Ruhig anfangen, beim „Was machst du jetzt?“ kurz Pause.",
+    hooks: [
+      { on: true, title: "Sperrbildschirm um 2:14", text: "Nachricht leuchtet auf: „Hilfe, bei mir tropft Wasser durch die Decke!“ Dazu groß: „Was jetzt?“" },
+      { title: "Frage", text: "„Was passiert, wenn dein Mieter nachts einen Wasserschaden meldet?“ Tropfen fallen über den Bildschirm." },
+      { title: "Vorher / nachher", text: "Links: „Ohne Ecoraum: du um 2:14 am Telefon.“ Rechts: „Mit Ecoraum: du schläfst.“" } ],
+    lines: [
+      { ca: 6.1, who: "L", say: "Zwei Uhr nachts. Dein Mieter schreibt: „Bei mir tropft Wasser durch die Decke!“" },
+      { ca: 1.6, who: "L", say: "Was machst du jetzt?" },
+      { ca: 3.4, who: "L", say: "Mit Ecoraum schreibt er nicht dir, sondern uns." },
+      { ca: 8.4, who: "L", say: "Unser Assistent antwortet sofort: Abstand zu Strom halten, wenn's gefahrlos geht die Sicherung raus, Eimer drunter." },
+      { ca: 5.9, who: "L", say: "Gleichzeitig geht der Fall als Notfall an unser Team. Mit Adresse, Foto, allem." },
+      { ca: 2.1, who: "L", say: "Und du? Schläfst weiter." } ] },
+  { id: "heizung", name: "Heizung · Sonntagabend", speaker: "Louis", idea: "Locker, als würdest du es einem Vermieter-Freund erzählen.",
+    hooks: [
+      { on: true, title: "Sperrbildschirm um 21:47", text: "„Hallo, die Heizung im Bad bleibt kalt.“ Dazu groß: „Wer kümmert sich?“" },
+      { title: "Kontrast", text: "„Büro: Montag ab 9.“ – „Ecoraum: jetzt.“" },
+      { title: "Konkretes Versprechen", text: "„Heizung kalt am Sonntag? So läuft das in 3 Nachrichten.“" } ],
+    lines: [
+      { ca: 4.7, who: "L", say: "Sonntagabend, kurz vor zehn: „Die Heizung im Bad bleibt kalt.“" },
+      { ca: 3.7, who: "L", say: "Normalerweise fängst du jetzt an rumzutelefonieren." },
+      { ca: 3.5, who: "L", say: "Mit Ecoraum schreibt deine Mieterin einfach uns." },
+      { ca: 5.9, who: "L", say: "Unser Assistent fragt nach, was der Handwerker wissen muss, und legt einen Fall an." },
+      { ca: 5.7, who: "L", say: "Ich organisier den Heizungsbauer, und du bekommst Bescheid, wenn's erledigt ist." },
+      { ca: 2.1, who: "L", say: "Kein Anruf. Kein Stress." } ] },
+  { id: "frage", name: "Frage · Heizkörper", speaker: "Dominic", idea: "Die Mieter-Frage ruhig etwas genervt vorlesen.",
+    hooks: [
+      { on: true, title: "Versprechen", text: "„Diese Frage musst du nie wieder beantworten:“ Darunter ploppt die Mieter-Nachricht auf." },
+      { title: "Vermieter-Hack", text: "„Vermieter-Hack: Lass deine Mieter hier fragen statt dich.“" },
+      { title: "Beweis", text: "„Heizkörper gluckert? Diese Antwort kam in Sekunden.“" } ],
+    lines: [
+      { ca: 6.9, who: "D", say: "Diese Frage musst du nie wieder beantworten: „Mein Heizkörper gluckert, was soll ich machen?“" },
+      { ca: 7.1, who: "D", say: "Deine Mieter fragen einfach unseren Assistenten auf WhatsApp. Rund um die Uhr, auch auf Englisch." },
+      { ca: 4.8, who: "D", say: "Der erklärt Schritt für Schritt, wie man den Heizkörper entlüftet." },
+      { ca: 3.9, who: "D", say: "Und wenn's nicht hilft, schicken wir einen Handwerker." },
+      { ca: 2.1, who: "D", say: "Und du? Hast Feierabend." } ] },
+  { id: "vision", name: "Vision · vier Dinge", speaker: "Dominic", idea: "Die drei Worte am Anfang knapp und trocken.",
     hooks: [
       { on: true, title: "Schmerz-Stapel", text: "„Warteschleife. Keine Antwort. Zu teuer.“ Wird nacheinander durchgestrichen." },
       { title: "Stopp", text: "„Stopp: Zahl nicht für eine Verwaltung, die du nie erreichst.“" },
       { title: "Bei null", text: "„Wenn wir Hausverwaltung neu bauen müssten, dann so.“" } ],
     lines: [
-      { at: 0.1, ca: 1.1, who: "D", say: "Warteschleife." },
-      { at: 0.96, ca: 1.1, who: "D", say: "Keine Antwort." },
-      { at: 1.95, ca: 0.8, who: "D", say: "Zu teuer." },
-      { at: 3.9, ca: 1.2, who: "D", say: "Das geht besser." },
-      { at: 5.6, ca: 2.4, who: "D", say: "Vier Dinge, die wir anders machen." },
-      { at: 7.75, ca: 1.4, who: "D", say: "Eins: per WhatsApp." },
-      { at: 9.65, ca: 1.9, who: "D", say: "Zwei: Nichts geht verloren." },
-      { at: 11.6, ca: 1.9, who: "D", say: "Drei: Menschen entscheiden." },
-      { at: 13.5, ca: 1.8, who: "D", say: "Vier: deutlich günstiger." },
-      { at: 15.6, ca: 1.8, who: "D", say: "Ecoraum. Neu gedacht." } ] },
+      { ca: 4.8, who: "D", say: "Warteschleife. Keine Antwort. Und dafür zahlst du auch noch." },
+      { ca: 5.5, who: "D", say: "Wir finden: Hausverwaltung geht besser. Wir machen vier Dinge anders." },
+      { ca: 4.2, who: "D", say: "Eins: Deine Mieter erreichen uns per WhatsApp, sofort." },
+      { ca: 4.8, who: "D", say: "Zwei: Jeder Fall bekommt eine Nummer. Nichts geht verloren." },
+      { ca: 4.5, who: "D", say: "Drei: Technik sortiert vor, aber entscheiden tun Menschen." },
+      { ca: 6.5, who: "D", say: "Vier: Das Ganze für einen Bruchteil von dem, was eine klassische Hausverwaltung kostet." },
+      { ca: 3.6, who: "D", say: "Wir starten in Stuttgart. Schreib uns „Pilot“." } ] },
 ];
 const WHO = { L: "Louis", D: "Dominic", "L+D": "Louis + Dominic" };
 const fmt = (s) => s.toFixed(1).replace(".", ",");
@@ -237,7 +223,7 @@ function show(i) {
         ${v.hooks.map((h, k) => `<div class="hook${h.on ? " on" : ""}"><span class="tag">${h.on ? "IM VIDEO" : "ALT " + k}</span><b>${esc(h.title)}</b><span>${esc(h.text)}</span></div>`).join("")}
       </div></div>
       <div><div class="label" style="margin-bottom:8px">Sprechtext, Satz für Satz</div><div class="lines">
-        ${v.lines.map((l) => `<div class="ln"><div class="t"><b>ab ${fmt(l.at)} s</b>ca. ${fmt(l.ca)} s</div>
+        ${v.lines.map((l) => `<div class="ln"><div class="t">${l.at != null ? `<b>ab ${fmt(l.at)} s</b>` : ""}ca. ${fmt(l.ca)} s</div>
           <div class="say"><span class="who">${esc(WHO[l.who] || l.who)}</span>${esc(l.say)}${l.hint ? `<span class="hint">${esc(l.hint)}</span>` : ""}</div></div>`).join("")}
       </div></div>
     </div>`;
@@ -264,7 +250,7 @@ function draw() {
   el("tp-count").textContent = `${idx + 1} / ${tv.lines.length}`;
   el("tp-who").textContent = WHO[l.who] || l.who;
   el("tp-line").textContent = l.say;
-  el("tp-meta").textContent = `ab ${fmt(l.at)} s · ca. ${fmt(l.ca)} s${l.hint ? " · " + l.hint : ""}`;
+  el("tp-meta").textContent = `${l.at != null ? "ab " + fmt(l.at) + " s · " : ""}ca. ${fmt(l.ca)} s${l.hint ? " · " + l.hint : ""}`;
   const n = tv.lines[idx + 1];
   el("tp-next").textContent = n ? "Danach: " + n.say : "Fertig. Aufnahme stoppen.";
   el("tp-prev").disabled = idx === 0;
