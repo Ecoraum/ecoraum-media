@@ -1,0 +1,304 @@
+<title>Ecoraum Sprechskript</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
+<style>
+/* Layout: one narrow reading column (max 760px); video tabs on top; each line is a row with its time window.
+   Teleprompter is a full-screen overlay with one huge line at a time. */
+:root {
+  --bg: #ffffff; --fg: #0b0c0b; --mute: #6f7672; --line: #e3e7e4; --soft: #f2f5f3;
+  --acc: #13985a; --acc-soft: #e2f4ea; --red: #d93c41; --red-soft: #fbe9ea;
+  --display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --text: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0b0c0b; --fg: #f2f4f3; --mute: #9aa29e; --line: #262a28; --soft: #161917;
+  --acc: #3ddc84; --acc-soft: #12301f; --red: #ff6b6f; --red-soft: #3a1618; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0b0c0b; --fg: #f2f4f3; --mute: #9aa29e; --line: #262a28; --soft: #161917;
+  --acc: #3ddc84; --acc-soft: #12301f; --red: #ff6b6f; --red-soft: #3a1618; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--text); font-size: 16px; line-height: 1.55; margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; }
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+.brand { font-family: var(--display); font-stretch: 125%; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; font-size: 13px; color: var(--mute); }
+h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; }
+.lede { color: var(--mute); max-width: 62ch; margin: 10px 0 0; }
+h2 { font-size: 20px; letter-spacing: -0.015em; font-weight: 700; }
+.label { font-family: var(--display); font-stretch: 125%; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; font-size: 11px; color: var(--mute); }
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.step { background: var(--soft); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.step b { font-size: 15px; }
+.step p { margin: 0; color: var(--mute); font-size: 14.5px; }
+
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tab { font: 600 15px var(--text); border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.tab:focus-visible, .btn:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
+
+.video { display: flex; flex-direction: column; gap: 22px; }
+.vhead { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.vhead h2 { font-size: 26px; }
+.vhead p { margin: 4px 0 0; color: var(--mute); }
+.btn { font: 600 15px var(--text); border: 0; border-radius: 999px; padding: 12px 20px; cursor: pointer; background: var(--acc); color: #fff; }
+.btn.ghost { background: var(--soft); color: var(--fg); }
+:root[data-theme="dark"] .btn:not(.ghost), :root:not([data-theme="light"]) .btn:not(.ghost) { color: #06140c; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .btn:not(.ghost) { color: #fff; } }
+
+.hooks { display: flex; flex-direction: column; gap: 10px; }
+.hook { border: 1.5px solid var(--line); border-radius: 18px; padding: 14px 16px; display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
+.hook.on { border-color: var(--acc); background: var(--acc-soft); }
+.hook .tag { grid-row: span 2; font-family: var(--display); font-stretch: 125%; font-weight: 800; font-size: 13px; color: var(--mute); padding-top: 2px; }
+.hook.on .tag { color: var(--acc); }
+.hook b { font-size: 16px; }
+.hook span { color: var(--mute); font-size: 14.5px; }
+
+.lines { display: flex; flex-direction: column; border-top: 1.5px solid var(--line); }
+.ln { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1.5px solid var(--line); align-items: baseline; }
+.ln .t { font-variant-numeric: tabular-nums; font-size: 13.5px; color: var(--mute); line-height: 1.3; }
+.ln .t b { display: block; color: var(--fg); font-size: 14px; }
+.ln .say { font-size: 19px; font-weight: 600; letter-spacing: -0.012em; min-width: 0; }
+.ln .who { display: inline-block; font: 700 11px var(--display); font-stretch: 125%; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acc); margin-right: 8px; }
+.ln .hint { display: block; font-size: 14px; font-weight: 400; color: var(--mute); margin-top: 2px; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.fact { border-radius: 18px; background: var(--soft); padding: 16px 18px; min-width: 0; }
+.fact b { display: block; margin-bottom: 4px; }
+.fact p { margin: 0; color: var(--mute); font-size: 14.5px; }
+.src { font-size: 13px; color: var(--mute); }
+.src a { color: var(--mute); }
+
+/* teleprompter */
+.tp { position: fixed; inset: 0; z-index: 50; background: #050605; color: #f4f6f5; display: flex; flex-direction: column;
+  padding: calc(18px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
+.tp-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; color: #9aa29e; }
+.tp-main { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; min-height: 0; }
+.tp-who { font: 800 13px var(--display); font-stretch: 125%; letter-spacing: 0.16em; text-transform: uppercase; color: #3ddc84; }
+.tp-line { font-size: clamp(34px, 8.5vw, 84px); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; text-wrap: balance; }
+.tp-meta { font-size: 16px; color: #9aa29e; font-variant-numeric: tabular-nums; }
+.tp-next { font-size: clamp(18px, 3.4vw, 28px); color: #5f6763; font-weight: 600; }
+.tp-bar { height: 6px; border-radius: 3px; background: #1d211f; overflow: hidden; }
+.tp-bar i { display: block; height: 100%; width: 0; background: #3ddc84; }
+.tp-ctl { display: flex; gap: 10px; flex-wrap: wrap; }
+.tp .btn.ghost { background: #1d211f; color: #f4f6f5; }
+@media (prefers-reduced-motion: reduce) { .tp-bar i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand">Ecoraum · Reels v4</div>
+    <h1>Sprechskript für Louis &amp; Dominic</h1>
+    <p class="lede">Fünf Reels, 18 Sekunden, auf dem Drop von Louis' Song. Der Text im Video ist gleichzeitig euer Sprechtext. Ihr sprecht, ich lege es passgenau unter die Bilder.</p>
+  </header>
+
+  <section aria-labelledby="how">
+    <h2 id="how" style="margin-bottom:14px">So nehmt ihr auf</h2>
+    <div class="steps">
+      <div class="step"><b>1 · Ruhiger Raum</b><p>Schlafzimmer oder vor dem Kleiderschrank. Kein Bad, keine Küche. Handy eine Handbreit vor dem Mund, leicht seitlich.</p></div>
+      <div class="step"><b>2 · Ein Memo pro Video</b><p>Aufnahme starten, 2 Sekunden still sein, dann Satz für Satz. Zwischen den Sätzen einmal durchatmen (1–2 Sekunden).</p></div>
+      <div class="step"><b>3 · Versprochen?</b><p>Kurz Pause, dann den ganzen Satz nochmal. Die Aufnahme wird automatisch abgehört, die letzte saubere Version gewinnt.</p></div>
+      <div class="step"><b>4 · Hier hochladen</b><p>Memos im Chat mit Claude hochladen. Dateinamen sind egal: Welches Video gemeint ist, wird am gesprochenen Text erkannt.</p></div>
+    </div>
+    <p class="lede" style="margin-top:14px">Sprecht wie zu einem Freund: lächeln, etwas mehr Energie als normal, nicht vorlesen. Die Zeiten sind Richtwerte für normales Sprechtempo. Nicht hetzen: Ich passe die Bilder an eure Aufnahme an.</p>
+  </section>
+
+  <section aria-labelledby="videos" class="video" id="videos">
+    <div class="tabs" role="tablist" aria-label="Videos" id="tabs"></div>
+    <div id="panel"></div>
+  </section>
+
+  <section aria-labelledby="why">
+    <h2 id="why" style="margin-bottom:14px">Warum die Hooks so gebaut sind</h2>
+    <div class="facts">
+      <div class="fact"><b>Weiterleiten zählt am meisten</b><p>Instagram gewichtet Watch time, Likes und Sends pro Reichweite. Sends sind das stärkste Signal, um Nicht-Follower zu erreichen. Deshalb enden alle Folgen auf einer Pointe, die man einem Vermieter-Freund schickt.</p></div>
+      <div class="fact"><b>Die ersten 2 Sekunden</b><p>Bewegung im ersten Bild, großer Text und eine offene Frage. Der Sperrbildschirm um 2:14 ist ein Moment, den jeder Vermieter kennt.</p></div>
+      <div class="fact"><b>Chat-Geschichten halten</b><p>Bekannte Oberfläche, Tipp-Punkte und kurze Pausen erzeugen Spannung. Die Auflösung kommt genau auf dem Drop.</p></div>
+      <div class="fact"><b>Kurz und als Loop</b><p>7 bis 15 Sekunden hatten in einer Auswertung viraler Reels die beste Abschlussrate. Unsere 18 Sekunden enden so, dass das Video nahtlos von vorn beginnt.</p></div>
+      <div class="fact"><b>Ohne Ton verständlich</b><p>Viele schauen stumm. Jeder gesprochene Satz steht auch im Bild.</p></div>
+      <div class="fact"><b>Testen statt raten</b><p>Pro Video gibt es drei Hooks. Mit Trial Reels testet man sie an Nicht-Followern, dafür braucht der Account laut mehreren Quellen etwa 1.000 Follower. Bis dahin postet ihr die Varianten im Abstand von ein paar Tagen.</p></div>
+    </div>
+    <p class="src" style="margin-top:14px">Quellen (überwiegend Marketing-Blogs, Zahlen nur als Richtwerte): <a href="https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/">Social Media Today</a>, <a href="https://buffer.com/resources/instagram-algorithms/">Buffer</a>, <a href="https://www.planoly.com/blog/do-trial-reels-work-research">Planoly</a>, <a href="https://www.shortimize.com/blog/video-length-sweet-spots-tiktok-reels-shorts">Shortimize</a>, <a href="https://klap.app/blog/how-long-should-reels-be">Klap</a>, <a href="https://clippie.ai/blog/how-to-make-viral-text-story-videos-2025">Clippie</a>.</p>
+  </section>
+</div>
+
+<div class="tp" id="tp" hidden role="dialog" aria-modal="true" aria-label="Teleprompter">
+  <div class="tp-top"><span id="tp-title"></span><span id="tp-count"></span></div>
+  <div class="tp-main">
+    <div class="tp-who" id="tp-who"></div>
+    <div class="tp-line" id="tp-line"></div>
+    <div class="tp-meta" id="tp-meta"></div>
+    <div class="tp-bar" aria-hidden="true"><i id="tp-bar"></i></div>
+    <div class="tp-next" id="tp-next"></div>
+  </div>
+  <div class="tp-ctl">
+    <button class="btn ghost" id="tp-prev" type="button">Zurück</button>
+    <button class="btn" id="tp-nextbtn" type="button">Weiter</button>
+    <button class="btn ghost" id="tp-run" type="button">Zeitlauf (18 s)</button>
+    <button class="btn ghost" id="tp-close" type="button">Schließen</button>
+  </div>
+</div>
+
+<script>
+const VIDEOS = [
+  { id: "notfall", name: "Notfall · 2:14", speaker: "Louis", idea: "Mieter-Nachrichten, Folge 1. Dein Sperrbildschirm mitten in der Nacht.",
+    hooks: [
+      { on: true, title: "Sperrbildschirm um 2:14", text: "Nachricht leuchtet auf: „Hilfe, bei mir tropft Wasser durch die Decke!“ Dazu groß: „Was jetzt?“" },
+      { title: "Frage", text: "„Was passiert, wenn dein Mieter nachts einen Wasserschaden meldet?“ Tropfen fallen über den Bildschirm." },
+      { title: "Vorher / nachher", text: "Links: „Ohne Ecoraum: du um 2:14 am Telefon.“ Rechts: „Mit Ecoraum: du schläfst.“" } ],
+    lines: [
+      { at: 0.2, ca: 2.9, who: "L", say: "Zwei Uhr nachts. Dein Handy leuchtet." },
+      { at: 2.6, ca: 0.8, who: "L", say: "Was jetzt?", hint: "kurz, fragend" },
+      { at: 3.9, ca: 2.5, who: "L", say: "Mit Ecoraum schreibt er einfach uns." },
+      { at: 7.8, ca: 3.1, who: "L", say: "Notfall erkannt. Das Team ist alarmiert.", hint: "auf dem Drop" },
+      { at: 10.2, ca: 1.5, who: "L", say: "Mit allem, was zählt." },
+      { at: 13.5, ca: 0.6, who: "L", say: "Und du?", hint: "kurz, fragend" },
+      { at: 14.4, ca: 1.2, who: "L", say: "Schläfst weiter.", hint: "trocken, mit Lächeln" },
+      { at: 15.6, ca: 2.5, who: "L", say: "Ecoraum. Vermieten ohne Stress." } ] },
+  { id: "heizung", name: "Heizung · Sonntag", speaker: "Louis", idea: "Mieter-Nachrichten, Folge 2. Sonntagabend, die Heizung ist kalt.",
+    hooks: [
+      { on: true, title: "Sperrbildschirm um 21:47", text: "„Hallo, die Heizung im Bad bleibt kalt.“ Dazu groß: „Wer kümmert sich?“" },
+      { title: "Kontrast", text: "„Büro: Montag ab 9.“ – „Ecoraum: jetzt.“" },
+      { title: "Konkretes Versprechen", text: "„Heizung kalt am Sonntag? So läuft das in 3 Nachrichten.“" } ],
+    lines: [
+      { at: 0.2, ca: 2.0, who: "L", say: "Sonntagabend, kurz vor zehn." },
+      { at: 2.3, ca: 1.3, who: "L", say: "Wer kümmert sich?" },
+      { at: 3.9, ca: 2.1, who: "L", say: "Mit Ecoraum schreibt sie uns." },
+      { at: 7.8, ca: 2.4, who: "L", say: "Fall angelegt, ans Team übergeben.", hint: "auf dem Drop" },
+      { at: 10.3, ca: 2.2, who: "L", say: "Termin steht: Montag, acht Uhr." },
+      { at: 13.5, ca: 0.6, who: "L", say: "Und du?", hint: "kurz, fragend" },
+      { at: 14.4, ca: 0.9, who: "L", say: "Kein Anruf.", hint: "trocken" },
+      { at: 15.6, ca: 2.5, who: "L", say: "Ecoraum. Vermieten ohne Stress." } ] },
+  { id: "frage", name: "Frage · Heizkörper", speaker: "Dominic", idea: "Mieter-Nachrichten, Folge 3. Eine Frage, die du nie wieder beantworten musst.",
+    hooks: [
+      { on: true, title: "Versprechen", text: "„Diese Frage musst du nie wieder beantworten:“ Darunter ploppt die Mieter-Nachricht auf." },
+      { title: "Vermieter-Hack", text: "„Vermieter-Hack: Lass deine Mieter hier fragen statt dich.“" },
+      { title: "Beweis", text: "„Heizkörper gluckert? Diese Antwort kam in Sekunden.“" } ],
+    lines: [
+      { at: 0.1, ca: 3.1, who: "D", say: "Diese Frage musst du nie wieder beantworten." },
+      { at: 3.9, ca: 3.8, who: "D", say: "Unser Assistent antwortet sofort, Schritt für Schritt." },
+      { at: 7.8, ca: 2.9, who: "D", say: "Antwort in Sekunden. Rund um die Uhr.", hint: "auf dem Drop" },
+      { at: 10.6, ca: 2.4, who: "D", say: "Wenn nötig, kommt der Handwerker." },
+      { at: 13.5, ca: 0.6, who: "D", say: "Und du?", hint: "kurz, fragend" },
+      { at: 14.4, ca: 1.2, who: "D", say: "Hast Feierabend." },
+      { at: 15.6, ca: 2.0, who: "D", say: "Ecoraum. Einfach fragen." } ] },
+  { id: "gruender", name: "Gründer", speaker: "beide", idea: "Wer wir sind. Am stärksten als Selfie-Video mit euren Gesichtern, sonst als Stimme.",
+    hooks: [
+      { on: true, title: "Klare Ansage", text: "„Zwei Studenten bauen die Hausverwaltung neu.“" },
+      { title: "Geschichte (Louis vor der Kamera)", text: "„Ich hab Wohnungen renoviert – und das Problem war nie die Reparatur.“" },
+      { title: "Bei null", text: "„So würden wir Hausverwaltung bauen, wenn wir bei null anfangen. Machen wir gerade.“" } ],
+    lines: [
+      { at: 0.1, ca: 1.2, who: "L", say: "Zwei Studenten …" },
+      { at: 1.3, ca: 2.2, who: "D", say: "… bauen die Hausverwaltung neu." },
+      { at: 3.95, ca: 1.1, who: "L", say: "Ich bin Louis." },
+      { at: 5.6, ca: 1.2, who: "D", say: "Ich bin Dominic." },
+      { at: 7.7, ca: 0.9, who: "L", say: "Erreichbar.", hint: "genau auf dem Drop, knackig" },
+      { at: 8.66, ca: 1.0, who: "D", say: "Organisiert." },
+      { at: 9.63, ca: 0.8, who: "L", say: "Bezahlbar." },
+      { at: 10.6, ca: 1.0, who: "D", say: "Per WhatsApp." },
+      { at: 11.6, ca: 1.8, who: "L", say: "Wir starten in Stuttgart." },
+      { at: 13.5, ca: 1.5, who: "D", say: "Folg uns beim Aufbau." },
+      { at: 15.6, ca: 0.7, who: "L+D", say: "Ecoraum.", hint: "beide gleichzeitig" } ] },
+  { id: "vision", name: "Vision", speaker: "Dominic", idea: "Hausverwaltung, neu gedacht: vier Dinge, die wir anders machen.",
+    hooks: [
+      { on: true, title: "Schmerz-Stapel", text: "„Warteschleife. Keine Antwort. Zu teuer.“ Wird nacheinander durchgestrichen." },
+      { title: "Stopp", text: "„Stopp: Zahl nicht für eine Verwaltung, die du nie erreichst.“" },
+      { title: "Bei null", text: "„Wenn wir Hausverwaltung neu bauen müssten, dann so.“" } ],
+    lines: [
+      { at: 0.1, ca: 1.1, who: "D", say: "Warteschleife." },
+      { at: 0.96, ca: 1.1, who: "D", say: "Keine Antwort." },
+      { at: 1.95, ca: 0.8, who: "D", say: "Zu teuer." },
+      { at: 3.9, ca: 1.2, who: "D", say: "Das geht besser." },
+      { at: 5.6, ca: 2.4, who: "D", say: "Vier Dinge, die wir anders machen." },
+      { at: 7.75, ca: 1.4, who: "D", say: "Eins: per WhatsApp." },
+      { at: 9.65, ca: 1.9, who: "D", say: "Zwei: Nichts geht verloren." },
+      { at: 11.6, ca: 1.9, who: "D", say: "Drei: Menschen entscheiden." },
+      { at: 13.5, ca: 1.8, who: "D", say: "Vier: deutlich günstiger." },
+      { at: 15.6, ca: 1.8, who: "D", say: "Ecoraum. Neu gedacht." } ] },
+];
+const WHO = { L: "Louis", D: "Dominic", "L+D": "Louis + Dominic" };
+const fmt = (s) => s.toFixed(1).replace(".", ",");
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+const tabs = document.getElementById("tabs"), panel = document.getElementById("panel");
+let current = 0;
+function show(i) {
+  current = i;
+  [...tabs.children].forEach((b, k) => b.setAttribute("aria-selected", String(k === i)));
+  const v = VIDEOS[i];
+  panel.innerHTML = `
+    <div class="video">
+      <div class="vhead"><div><div class="label">Sprecher: ${esc(v.speaker)}</div><h2>${esc(v.name)}</h2><p>${esc(v.idea)}</p></div>
+        <button class="btn" type="button" id="open-tp">Teleprompter öffnen</button></div>
+      <div><div class="label" style="margin-bottom:8px">Hook-Varianten</div><div class="hooks">
+        ${v.hooks.map((h, k) => `<div class="hook${h.on ? " on" : ""}"><span class="tag">${h.on ? "IM VIDEO" : "ALT " + k}</span><b>${esc(h.title)}</b><span>${esc(h.text)}</span></div>`).join("")}
+      </div></div>
+      <div><div class="label" style="margin-bottom:8px">Sprechtext, Satz für Satz</div><div class="lines">
+        ${v.lines.map((l) => `<div class="ln"><div class="t"><b>ab ${fmt(l.at)} s</b>ca. ${fmt(l.ca)} s</div>
+          <div class="say"><span class="who">${esc(WHO[l.who] || l.who)}</span>${esc(l.say)}${l.hint ? `<span class="hint">${esc(l.hint)}</span>` : ""}</div></div>`).join("")}
+      </div></div>
+    </div>`;
+  document.getElementById("open-tp").addEventListener("click", () => openTp(i));
+  try { localStorage.setItem("ecoraum-tab", String(i)); } catch (e) {}
+}
+VIDEOS.forEach((v, i) => {
+  const b = document.createElement("button");
+  b.className = "tab"; b.type = "button"; b.role = "tab"; b.id = "tab-" + v.id; b.textContent = v.name;
+  b.addEventListener("click", () => show(i));
+  tabs.appendChild(b);
+});
+let start = 0;
+try { start = Math.min(VIDEOS.length - 1, Math.max(0, +localStorage.getItem("ecoraum-tab") || 0)); } catch (e) {}
+show(start);
+
+// teleprompter
+const tp = document.getElementById("tp");
+const el = (id) => document.getElementById(id);
+let tv = null, idx = 0, runTimer = null, runStart = 0, wake = null;
+function draw() {
+  const l = tv.lines[idx];
+  el("tp-title").textContent = tv.name;
+  el("tp-count").textContent = `${idx + 1} / ${tv.lines.length}`;
+  el("tp-who").textContent = WHO[l.who] || l.who;
+  el("tp-line").textContent = l.say;
+  el("tp-meta").textContent = `ab ${fmt(l.at)} s · ca. ${fmt(l.ca)} s${l.hint ? " · " + l.hint : ""}`;
+  const n = tv.lines[idx + 1];
+  el("tp-next").textContent = n ? "Danach: " + n.say : "Fertig. Aufnahme stoppen.";
+  el("tp-prev").disabled = idx === 0;
+}
+async function openTp(i) {
+  tv = VIDEOS[i]; idx = 0; tp.hidden = false; draw(); el("tp-nextbtn").focus();
+  try { wake = await navigator.wakeLock?.request("screen"); } catch (e) { wake = null; }
+}
+function closeTp() { stopRun(); tp.hidden = true; try { wake?.release(); } catch (e) {} wake = null; document.getElementById("open-tp")?.focus(); }
+function step(d) { if (!tv) return; idx = Math.max(0, Math.min(tv.lines.length - 1, idx + d)); draw(); }
+function stopRun() { if (runTimer) cancelAnimationFrame(runTimer); runTimer = null; el("tp-bar").style.width = "0"; el("tp-run").textContent = "Zeitlauf (18 s)"; }
+function run() {
+  if (runTimer) { stopRun(); return; }
+  idx = 0; draw(); runStart = performance.now() + 3000; el("tp-run").textContent = "Stopp";
+  const tick = (now) => {
+    const t = (now - runStart) / 1000;
+    if (t < 0) { el("tp-meta").textContent = `Start in ${Math.ceil(-t)} …`; runTimer = requestAnimationFrame(tick); return; }
+    let k = 0; tv.lines.forEach((l, j) => { if (t >= l.at - 0.05) k = j; });
+    if (k !== idx) { idx = k; draw(); }
+    const l = tv.lines[idx];
+    el("tp-bar").style.width = Math.min(100, Math.max(0, (t - l.at) / l.ca * 100)) + "%";
+    if (t > 18.2) { stopRun(); el("tp-meta").textContent = "Fertig. 18,2 Sekunden."; return; }
+    runTimer = requestAnimationFrame(tick);
+  };
+  runTimer = requestAnimationFrame(tick);
+}
+el("tp-nextbtn").addEventListener("click", () => step(1));
+el("tp-prev").addEventListener("click", () => step(-1));
+el("tp-close").addEventListener("click", closeTp);
+el("tp-run").addEventListener("click", run);
+document.addEventListener("keydown", (e) => {
+  if (tp.hidden) return;
+  if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); step(1); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
+  else if (e.key === "Escape") closeTp();
+});
+</script>

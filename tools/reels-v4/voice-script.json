@@ -1,0 +1,331 @@
+{
+ "notfall": [
+  {
+   "sec": "A",
+   "at": 0.2,
+   "who": "L",
+   "say": "Zwei Uhr nachts. Dein Handy leuchtet.",
+   "ca": 2.9
+  },
+  {
+   "sec": "A",
+   "at": 2.6,
+   "who": "L",
+   "say": "Was jetzt?",
+   "ca": 0.8,
+   "hint": "kurz, fragend"
+  },
+  {
+   "sec": "B",
+   "at": 3.9,
+   "who": "L",
+   "say": "Mit Ecoraum schreibt er einfach uns.",
+   "ca": 2.5
+  },
+  {
+   "sec": "C",
+   "at": 7.8,
+   "who": "L",
+   "say": "Notfall erkannt. Das Team ist alarmiert.",
+   "ca": 3.1,
+   "hint": "auf dem Drop"
+  },
+  {
+   "sec": "C",
+   "at": 10.2,
+   "who": "L",
+   "say": "Mit allem, was zählt.",
+   "ca": 1.5
+  },
+  {
+   "sec": "D",
+   "at": 13.5,
+   "who": "L",
+   "say": "Und du?",
+   "ca": 0.6,
+   "hint": "kurz, fragend"
+  },
+  {
+   "sec": "D",
+   "at": 14.4,
+   "who": "L",
+   "say": "Schläfst weiter.",
+   "ca": 1.2,
+   "hint": "trocken, mit Lächeln"
+  },
+  {
+   "sec": "E",
+   "at": 15.6,
+   "who": "L",
+   "say": "Ecoraum. Vermieten ohne Stress.",
+   "ca": 2.5
+  }
+ ],
+ "heizung": [
+  {
+   "sec": "A",
+   "at": 0.2,
+   "who": "L",
+   "say": "Sonntagabend, kurz vor zehn.",
+   "ca": 2.0
+  },
+  {
+   "sec": "A",
+   "at": 2.3,
+   "who": "L",
+   "say": "Wer kümmert sich?",
+   "ca": 1.3
+  },
+  {
+   "sec": "B",
+   "at": 3.9,
+   "who": "L",
+   "say": "Mit Ecoraum schreibt sie uns.",
+   "ca": 2.1
+  },
+  {
+   "sec": "C",
+   "at": 7.8,
+   "who": "L",
+   "say": "Fall angelegt, ans Team übergeben.",
+   "ca": 2.4,
+   "hint": "auf dem Drop"
+  },
+  {
+   "sec": "C",
+   "at": 10.3,
+   "who": "L",
+   "say": "Termin steht: Montag, acht Uhr.",
+   "ca": 2.2
+  },
+  {
+   "sec": "D",
+   "at": 13.5,
+   "who": "L",
+   "say": "Und du?",
+   "ca": 0.6,
+   "hint": "kurz, fragend"
+  },
+  {
+   "sec": "D",
+   "at": 14.4,
+   "who": "L",
+   "say": "Kein Anruf.",
+   "ca": 0.9,
+   "hint": "trocken"
+  },
+  {
+   "sec": "E",
+   "at": 15.6,
+   "who": "L",
+   "say": "Ecoraum. Vermieten ohne Stress.",
+   "ca": 2.5
+  }
+ ],
+ "frage": [
+  {
+   "sec": "A",
+   "at": 0.1,
+   "who": "D",
+   "say": "Diese Frage musst du nie wieder beantworten.",
+   "ca": 3.1
+  },
+  {
+   "sec": "B",
+   "at": 3.9,
+   "who": "D",
+   "say": "Unser Assistent antwortet sofort, Schritt für Schritt.",
+   "ca": 3.8
+  },
+  {
+   "sec": "C",
+   "at": 7.8,
+   "who": "D",
+   "say": "Antwort in Sekunden. Rund um die Uhr.",
+   "ca": 2.9,
+   "hint": "auf dem Drop"
+  },
+  {
+   "sec": "C",
+   "at": 10.6,
+   "who": "D",
+   "say": "Wenn nötig, kommt der Handwerker.",
+   "ca": 2.4
+  },
+  {
+   "sec": "D",
+   "at": 13.5,
+   "who": "D",
+   "say": "Und du?",
+   "ca": 0.6,
+   "hint": "kurz, fragend"
+  },
+  {
+   "sec": "D",
+   "at": 14.4,
+   "who": "D",
+   "say": "Hast Feierabend.",
+   "ca": 1.2
+  },
+  {
+   "sec": "E",
+   "at": 15.6,
+   "who": "D",
+   "say": "Ecoraum. Einfach fragen.",
+   "ca": 2.0
+  }
+ ],
+ "gruender": [
+  {
+   "sec": "A",
+   "at": 0.1,
+   "who": "L",
+   "say": "Zwei Studenten …",
+   "ca": 1.2
+  },
+  {
+   "sec": "A",
+   "at": 1.3,
+   "who": "D",
+   "say": "… bauen die Hausverwaltung neu.",
+   "ca": 2.2
+  },
+  {
+   "sec": "B",
+   "at": 3.95,
+   "who": "L",
+   "say": "Ich bin Louis.",
+   "ca": 1.1
+  },
+  {
+   "sec": "B",
+   "at": 5.6,
+   "who": "D",
+   "say": "Ich bin Dominic.",
+   "ca": 1.2
+  },
+  {
+   "sec": "C",
+   "at": 7.7,
+   "who": "L",
+   "say": "Erreichbar.",
+   "ca": 0.9,
+   "hint": "genau auf dem Drop, knackig"
+  },
+  {
+   "sec": "C",
+   "at": 8.66,
+   "who": "D",
+   "say": "Organisiert.",
+   "ca": 1.0
+  },
+  {
+   "sec": "C",
+   "at": 9.63,
+   "who": "L",
+   "say": "Bezahlbar.",
+   "ca": 0.8
+  },
+  {
+   "sec": "C",
+   "at": 10.6,
+   "who": "D",
+   "say": "Per WhatsApp.",
+   "ca": 1.0
+  },
+  {
+   "sec": "C",
+   "at": 11.6,
+   "who": "L",
+   "say": "Wir starten in Stuttgart.",
+   "ca": 1.8
+  },
+  {
+   "sec": "D",
+   "at": 13.5,
+   "who": "D",
+   "say": "Folg uns beim Aufbau.",
+   "ca": 1.5
+  },
+  {
+   "sec": "E",
+   "at": 15.6,
+   "who": "L+D",
+   "say": "Ecoraum.",
+   "ca": 0.7,
+   "hint": "beide gleichzeitig"
+  }
+ ],
+ "vision": [
+  {
+   "sec": "A",
+   "at": 0.1,
+   "who": "D",
+   "say": "Warteschleife.",
+   "ca": 1.1
+  },
+  {
+   "sec": "A",
+   "at": 0.96,
+   "who": "D",
+   "say": "Keine Antwort.",
+   "ca": 1.1
+  },
+  {
+   "sec": "A",
+   "at": 1.95,
+   "who": "D",
+   "say": "Zu teuer.",
+   "ca": 0.8
+  },
+  {
+   "sec": "B",
+   "at": 3.9,
+   "who": "D",
+   "say": "Das geht besser.",
+   "ca": 1.2
+  },
+  {
+   "sec": "B",
+   "at": 5.6,
+   "who": "D",
+   "say": "Vier Dinge, die wir anders machen.",
+   "ca": 2.4
+  },
+  {
+   "sec": "C",
+   "at": 7.75,
+   "who": "D",
+   "say": "Eins: per WhatsApp.",
+   "ca": 1.4
+  },
+  {
+   "sec": "C",
+   "at": 9.65,
+   "who": "D",
+   "say": "Zwei: Nichts geht verloren.",
+   "ca": 1.9
+  },
+  {
+   "sec": "C",
+   "at": 11.6,
+   "who": "D",
+   "say": "Drei: Menschen entscheiden.",
+   "ca": 1.9
+  },
+  {
+   "sec": "D",
+   "at": 13.5,
+   "who": "D",
+   "say": "Vier: deutlich günstiger.",
+   "ca": 1.8
+  },
+  {
+   "sec": "E",
+   "at": 15.6,
+   "who": "D",
+   "say": "Ecoraum. Neu gedacht.",
+   "ca": 1.8
+  }
+ ]
+}
