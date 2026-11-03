@@ -1,0 +1,153 @@
+{
+ "sources": {
+  "dom": "AUFNAHME_DOM.mp4",
+  "louis": "AUFNAHME_LOUIS.mp4"
+ },
+ "total": 95.0,
+ "pieces": [
+  {
+   "id": "A1",
+   "src": "dom",
+   "s": 1.1,
+   "e": 3.4,
+   "at": 0.3,
+   "text": "Es ist Sonntagabend, 10 Uhr."
+  },
+  {
+   "id": "A2",
+   "src": "dom",
+   "s": 4.3,
+   "e": 6.12,
+   "at": 3.05,
+   "text": "Bei deinem Mieter tropft Wasser durch die Decke."
+  },
+  {
+   "id": "A3",
+   "src": "dom",
+   "s": 6.55,
+   "e": 8.72,
+   "at": 5.55,
+   "text": "Früher hätte jetzt längst dein Handy geklingelt."
+  },
+  {
+   "id": "A4",
+   "src": "louis",
+   "s": 34.9,
+   "e": 41.45,
+   "at": 10.6,
+   "text": "Mit Ecoraum schreibt dein Mieter einfach uns auf WhatsApp, als Text, mit Foto oder als Sprachnachricht."
+  },
+  {
+   "id": "A5",
+   "src": "louis",
+   "s": 46.8,
+   "e": 52.62,
+   "at": 17.45,
+   "text": "Und er bekommt sofort eine Antwort von unserem KI-Assistenten. Dahinter steckt unser Team."
+  },
+  {
+   "id": "A6",
+   "src": "louis",
+   "s": 61.2,
+   "e": 62.78,
+   "at": 23.8,
+   "text": "Zuerst geht es um Sicherheit."
+  },
+  {
+   "id": "A7",
+   "src": "dom",
+   "s": 22.92,
+   "e": 30.84,
+   "at": 25.75,
+   "text": "Tropft es nah an Lampen oder Steckdosen: Sicherung raus. Wenn man gefahrlos hinkommt: Eimer drunter und beim Nachbarn"
+  },
+  {
+   "id": "A8",
+   "src": "dom",
+   "s": 31.56,
+   "e": 33.98,
+   "at": 33.77,
+   "text": "oben klingeln, um zu schauen, was los ist."
+  },
+  {
+   "id": "A9",
+   "src": "louis",
+   "s": 88.25,
+   "e": 98.7,
+   "at": 36.7,
+   "text": "Dann fragt Ecoraum genau, was der Handwerker wissen muss. Immer nur eine Frage auf einmal und nichts doppelt. Adresse und Wohnung kennt Ecoraum ja schon."
+  },
+  {
+   "id": "A10",
+   "src": "louis",
+   "s": 109.62,
+   "e": 121.0,
+   "at": 47.6,
+   "text": "Am Ende fasst Ecoraum alles kurz zusammen. Was ist passiert? Wo und seit wann? Und dazu gibt es die Fotos. Dein Mieter sagt „passt“ und erst dann wird daraus ein Fall erstellt."
+  },
+  {
+   "id": "A11",
+   "src": "dom",
+   "s": 43.45,
+   "e": 47.58,
+   "at": 59.5,
+   "text": "Unser Team bekommt den Fall mit Zusammenfassung und Fotos und prüft, wie dringend er ist."
+  },
+  {
+   "id": "A12",
+   "src": "dom",
+   "s": 47.97,
+   "e": 49.08,
+   "at": 63.85,
+   "text": "Ist es wirklich akut?"
+  },
+  {
+   "id": "A13",
+   "src": "dom",
+   "s": 66.25,
+   "e": 70.85,
+   "at": 65.4,
+   "text": "Wir suchen den passenden Handwerker und stimmen den Termin direkt mit deinem Mieter ab."
+  },
+  {
+   "id": "A14",
+   "src": "louis",
+   "s": 160.5,
+   "e": 163.98,
+   "at": 75.8,
+   "text": "Nach dem Termin fragen wir nach, ob alles geklappt hat."
+  },
+  {
+   "id": "A15",
+   "src": "louis",
+   "s": 167.65,
+   "e": 169.72,
+   "at": 79.55,
+   "text": "Erst dann ist der Fall für uns erledigt."
+  },
+  {
+   "id": "A16",
+   "src": "louis",
+   "s": 200.14,
+   "e": 205.1,
+   "at": 82.2,
+   "text": "Dein Mieter ist gut versorgt und du musst nicht mehr alles selbst hinterhertelefonieren."
+  },
+  {
+   "id": "A17",
+   "src": "dom",
+   "s": 95.3,
+   "e": 95.88,
+   "at": 87.9,
+   "text": "Ecoraum."
+  },
+  {
+   "id": "A18",
+   "src": "dom",
+   "s": 97.25,
+   "e": 98.45,
+   "at": 88.8,
+   "text": "Mehr auf ecoraum.de"
+  }
+ ]
+}
